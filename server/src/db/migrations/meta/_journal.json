@@ -8,6 +8,20 @@
       "when": 1751934749561,
       "tag": "0000_same_sue_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1752086935395,
+      "tag": "0001_chief_nekra",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752089737919,
+      "tag": "0002_clever_jean_grey",
+      "breakpoints": true
     }
   ]
 }
