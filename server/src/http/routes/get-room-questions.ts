@@ -18,7 +18,12 @@ export const getRoomQuestionsRoute: FastifyPluginAsyncZod = async (app) => {
       const { roomId } = request.params
 
       const result = await db
-        .select({ id: schema.questions.id, question: schema.questions.question })
+        .select({
+          id: schema.questions.id,
+          question: schema.questions.question,
+          answer: schema.questions.answer,
+          createdAt: schema.questions.createdAt,
+        })
         .from(schema.questions)
         .where(eq(schema.questions.roomId, roomId))
         .orderBy(desc(schema.questions.createdAt))
