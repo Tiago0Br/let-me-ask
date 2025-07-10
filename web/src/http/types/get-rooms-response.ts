@@ -1,4 +1,4 @@
-export interface GetRoomsApiResponse {
+export interface GetRoomsResponse {
   result: {
     id: string
     name: string
