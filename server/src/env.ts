@@ -3,6 +3,7 @@ import { z } from 'zod'
 const _envSchema = z.object({
   PORT: z.coerce.number().default(3333),
   DATABASE_URL: z.string().startsWith('postgresql://').url(),
+  GEMINI_API_KEY: z.string(),
 })
 
 const _env = _envSchema.safeParse(process.env)
