@@ -67,6 +67,7 @@ export const createQuestionRoute: FastifyPluginAsyncZod = async (app) => {
 
       return reply.status(201).send({
         questionId: createdQuestion.id,
+        answer,
       })
     }
   )
