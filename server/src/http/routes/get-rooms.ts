@@ -18,8 +18,6 @@ export const getRoomsRoute: FastifyPluginAsyncZod = async (app) => {
     async (request) => {
       const { limit, offset } = request.query
 
-      console.log(limit, offset)
-
       const result = await db
         .select({
           id: schema.rooms.id,

@@ -31,18 +31,16 @@ export const createQuestionRoute: FastifyPluginAsyncZod = async (app) => {
         .select({
           id: schema.audioChunks.id,
           transcription: schema.audioChunks.transcription,
-          similarity: sql<number>`1 - ${schema.audioChunks.embeddings} <=> ${embeddingsAsString}::vector`,
+          similarity: sql<number>`1 - (${schema.audioChunks.embeddings} <=> ${embeddingsAsString}::vector)`,
         })
         .from(schema.audioChunks)
         .where(
           and(
             eq(schema.audioChunks.roomId, roomId),
-            sql`1 - ${schema.audioChunks.embeddings} <=> ${embeddingsAsString}::vector < ${similarityThreshold}`
+            sql`1 - (${schema.audioChunks.embeddings} <=> ${embeddingsAsString}::vector) > ${similarityThreshold}`
           )
         )
-        .orderBy(
-          sql`1 - ${schema.audioChunks.embeddings} <=> ${embeddingsAsString}::vector`
-        )
+        .orderBy(sql`${schema.audioChunks.embeddings} <=> ${embeddingsAsString}::vector`)
         .limit(3)
 
       let answer: string | null = null
